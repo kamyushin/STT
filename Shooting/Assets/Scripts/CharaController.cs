@@ -11,9 +11,9 @@ public class CharaController : MonoBehaviour
     
     public int HP = 0;      //体力
     public int Attack = 0;  //攻撃力
+    
     protected CharaController()
-    {
-        
+    { 
     }
     // Start is called before the first frame update
     void Start()
