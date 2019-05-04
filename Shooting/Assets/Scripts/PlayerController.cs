@@ -9,8 +9,6 @@ public class PlayerController : CharaController
     public Rigidbody rb;
     PlayerController()
     {
-        HP = 10;
-        Attack = 3;
     }
     void Start()
     {

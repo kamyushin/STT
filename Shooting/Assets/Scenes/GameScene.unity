@@ -509,8 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b027622c6f9b444ba9d6ee0c024e453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
-  Attack: 3
+  HP: 1
+  Attack: 0
   speed: 10
   rb: {fileID: 0}
 --- !u!54 &539172629
