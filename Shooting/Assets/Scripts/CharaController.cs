@@ -27,12 +27,12 @@ public class CharaController : MonoBehaviour
     }
 
     /// <summary>
-    /// キャラクターへダメージを与える。HPは0が下限
+    /// HPにダメージを与える。HPは0が下限
     /// </summary>
-    /// <param name="attack">ダメージ</param>
-    protected void damage(int attack)
+    /// <param name="damage">ダメージ</param>
+    protected void damageHP(int damage)
     {
-        HP -= attack;
+        HP -= damage;
         if ( HP < 0)
         {
             HP = 0;
