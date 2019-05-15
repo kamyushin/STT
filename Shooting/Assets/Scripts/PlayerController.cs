@@ -42,9 +42,6 @@ public class PlayerController : CharaController
 		Vector3 dirHorizontal = new Vector3(Mathf.Cos(angleDir), 0, -Mathf.Sin(angleDir));  // カメラ右正面方向をベクトルで取得
 
 		// Playerの回転制御
-		if (false) {
-
-		}
 
 		
 		// 走る：デフォルト
