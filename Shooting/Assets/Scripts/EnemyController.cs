@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyController : CharaController
 {
-
     public float WalkSpeed;
     public float ChangeForwardTime;
     EnemyController()
     {
+        Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
         HP = 3;
         Attack = 1;
         WalkSpeed = 0.5f;
@@ -24,22 +24,31 @@ public class EnemyController : CharaController
     override protected void Update()
     {
         base.Update();
-    }
-
-
-    public override void wait() {
-        if (Input.GetKey(KeyCode.Space))
-            routine = Routine.CHARA_ROUTINE_MOVE;
-        transform.position += transform.forward * WalkSpeed * Time.deltaTime;
         if (HP == 0)
         {
             Destroy(this.gameObject);
         }
     }
+
+    public override void wait() {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
+            StartCoroutine("RandomWalk");
+        }
+        
+    }
     public override void move()
     {
-        StopCoroutine("RandomWalk");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Routine = CharaRoutine.CHARA_ROUTINE_WAIT;
+            StopCoroutine("RandomWalk");
+        }
+        transform.position += transform.forward * WalkSpeed * Time.deltaTime;
     }
+
+
     public override void shot()
     {
     }

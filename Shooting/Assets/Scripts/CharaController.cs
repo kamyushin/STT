@@ -8,15 +8,34 @@ using UnityEngine;
 /// </summary>
 abstract public class CharaController : MonoBehaviour
 {
-    public enum Routine{
+    public enum CharaRoutine
+    {
         CHARA_ROUTINE_WAIT,     //待機
         CHARA_ROUTINE_MOVE,     //移動
         CHARA_ROUTINE_SHOT,     //射撃
     }
 
-    public Routine routine = Routine.CHARA_ROUTINE_WAIT; //キャラ用ルーチン
-    public int HP = 0;      //体力
-    public int Attack = 0;  //攻撃力
+    [SerializeField]
+    private CharaRoutine routine = CharaRoutine.CHARA_ROUTINE_WAIT;
+    public CharaRoutine Routine {
+        get { return routine; }
+        set { routine = value; }
+    }
+
+    [SerializeField]
+    private int hp = 0;
+    public int HP {
+        get { return hp; }
+        protected set {hp = value; }
+    }
+
+    [SerializeField]
+    private int attack = 1;
+    public int Attack
+    {
+        get { return attack; }
+        set { attack = value; }
+    }
 
     //待機
     public virtual void wait() { }
@@ -25,29 +44,26 @@ abstract public class CharaController : MonoBehaviour
     //射撃
     public virtual void shot() { }
 
-
     protected CharaController()
     {
-
     }
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     virtual protected void Update()
     {
-        switch (routine)
+        switch (Routine)
         {
-            case Routine.CHARA_ROUTINE_WAIT:
+            case CharaRoutine.CHARA_ROUTINE_WAIT:
                 wait();
                 break;
-            case Routine.CHARA_ROUTINE_MOVE:
+            case CharaRoutine.CHARA_ROUTINE_MOVE:
                 move();
                 break;
-            case Routine.CHARA_ROUTINE_SHOT:
+            case CharaRoutine.CHARA_ROUTINE_SHOT:
                 shot();
                 break;
         }
