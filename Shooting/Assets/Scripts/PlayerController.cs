@@ -19,7 +19,7 @@ public class PlayerController : CharaController
 
 
 	PlayerController(){
-		//仮入力
+		//仮入力しています
 		Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
 		HP = 10;
 		Attack = 1;
@@ -31,10 +31,12 @@ public class PlayerController : CharaController
     }
 
 	override protected void Update() {
-
 		base.Update();
+	}
 
-		//移動
+	//移動
+	public override void move() {
+
 		// キー入力用変数
 		float vertical = Input.GetAxis("Vertical");
 		float horizontal = Input.GetAxis("Horizontal");
@@ -48,6 +50,7 @@ public class PlayerController : CharaController
 		Vector3 dirHorizontal = new Vector3(Mathf.Cos(angleDir), 0, -Mathf.Sin(angleDir));  // カメラ右正面方向をベクトルで取得
 
 
+		
 		// 走る or 歩く：カメラの向いている方向に移動
 		if (!hold) {
 			this.transform.position += dirVertical * vertical * runSpeed * Time.deltaTime;
@@ -57,13 +60,25 @@ public class PlayerController : CharaController
 			this.transform.position += dirHorizontal * horizontal * walkSpeed * Time.deltaTime;
 
 			if (Input.GetKey(KeyCode.J)) {
+				//Routine = CharaRoutine.CHARA_ROUTINE_SHOT;
 				Debug.Log("射撃");
 			}
 		}
 
 		// Playerの回転制御：カメラの向いている方向に回転
 		if (false) {
-
 		}
 	}
+
+
+	//Routineで取ると移動不能となるため、一旦shot部はコメントアウト
+	/*public override void shot() {
+		//動作確認用出力LOG
+		Debug.Log("射撃");
+
+		if (!(Input.GetKey(KeyCode.J))) {
+			Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
+		}
+	}*/
+
 }
