@@ -17,25 +17,21 @@ public class CameraController : MonoBehaviour
 
 	void Start()
     {
+		offset = transform.position - player.transform.position;
 		rotationSpeed = new Vector3(0.1f, 0.2f, 0.1f);
-
 	}
 
     void LateUpdate()
     {
 		// カメラの視点移動：LeftShift
-		offset = transform.position - player.transform.position;
 		if (Input.GetKey(KeyCode.LeftShift)) {
-			transform.position = player.transform.position - offset;
+			transform.position = player.transform.position;
 		} else {
 			transform.position = player.transform.position + offset;
 		}
 
-
-
-
 		// 右ドラッグにより視点移動：カメラ軸（ボタン離したら正面に戻す）
-		if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift)) {
+		if (Input.GetMouseButtonDown(0)) {
 			// 初期のカメラ角度を格納（カメラリセット用）
 			initAngle = mainCamera.transform.localEulerAngles;
 			// カメラの角度を変数に格納
@@ -43,7 +39,7 @@ public class CameraController : MonoBehaviour
 			lastMousePosition = Input.mousePosition;
 		}
 		// 右ドラッグしている間
-		else if(Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift)) { 
+		else if(Input.GetMouseButton(0)) { 
 			// Y軸の回転：マウスドラッグ方向に視点回転
 			currentAngle.y -= (Input.mousePosition.x - lastMousePosition.x) * rotationSpeed.y;
 			// x軸の回転：マウスドラッグ方向に視点回転
@@ -54,9 +50,9 @@ public class CameraController : MonoBehaviour
 			mainCamera.transform.localEulerAngles = currentAngle;
 			// マウス座標を変数lastMousePositionに格納
 			lastMousePosition = Input.mousePosition;
-		}else if (Input.GetMouseButtonUp(10)) {
+		}else if (Input.GetMouseButtonUp(0)) {
 			// 初期のカメラ角度に戻す
-			mainCamera.transform.localEulerAngles = initAngle;
+			//mainCamera.transform.localEulerAngles = initAngle;
 		}
 	}
 }

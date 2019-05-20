@@ -19,6 +19,8 @@ public class PlayerController : CharaController
 
 
 	PlayerController(){
+		//仮入力
+		Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
 		HP = 10;
 		Attack = 1;
 		runSpeed = 4.0f;
@@ -28,40 +30,40 @@ public class PlayerController : CharaController
     void Start(){     
     }
 
-	void Update() {
+	override protected void Update() {
 
+		base.Update();
+
+		//移動
 		// キー入力用変数
 		float vertical = Input.GetAxis("Vertical");
 		float horizontal = Input.GetAxis("Horizontal");
 		bool hold = Input.GetKey(KeyCode.LeftShift);
 		bool shot = Input.GetKey(KeyCode.J);
 		bool jump = Input.GetKey(KeyCode.Space);
-		
-		// 進行方向制御用変数
-		float angleDir = CameraTransform.transform.eulerAngles.y * (Mathf.PI / 180.0f);		// ワールド座標に対するオイラー角
-		Vector3 dirVertical = new Vector3(Mathf.Sin(angleDir), 0, Mathf.Cos(angleDir));		// カメラ正面方向をベクトルで取得
+
+		// 進行方向制御用変数：
+		float angleDir = CameraTransform.transform.eulerAngles.y * (Mathf.PI / 180.0f);     // ワールド座標に対するオイラー角の取得
+		Vector3 dirVertical = new Vector3(Mathf.Sin(angleDir), 0, Mathf.Cos(angleDir));     // カメラ正面方向をベクトルで取得
 		Vector3 dirHorizontal = new Vector3(Mathf.Cos(angleDir), 0, -Mathf.Sin(angleDir));  // カメラ右正面方向をベクトルで取得
 
-		// Playerの回転制御
-		if (false) {
 
-		}
-
-		
-		// 走る：デフォルト
+		// 走る or 歩く：カメラの向いている方向に移動
 		if (!hold) {
 			this.transform.position += dirVertical * vertical * runSpeed * Time.deltaTime;
 			this.transform.position += dirHorizontal * horizontal * runSpeed * Time.deltaTime;
-		}
-
-		// 構える・歩く。"J"で射撃（未実装）。
-		if (hold) {
+		} else {
 			this.transform.position += dirVertical * vertical * walkSpeed * Time.deltaTime;
 			this.transform.position += dirHorizontal * horizontal * walkSpeed * Time.deltaTime;
 
 			if (Input.GetKey(KeyCode.J)) {
 				Debug.Log("射撃");
 			}
+		}
+
+		// Playerの回転制御：カメラの向いている方向に回転
+		if (false) {
+
 		}
 	}
 }
