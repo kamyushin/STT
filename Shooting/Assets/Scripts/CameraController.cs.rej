@@ -1,0 +1,15 @@
+diff a/Shooting/Assets/Scripts/CameraController.cs b/Shooting/Assets/Scripts/CameraController.cs	(rejected hunks)
+@@ -10,13 +10,11 @@
+ 	private Vector2 rotationSpeed = new Vector2(0.1f,0.2f);
+ 	private Vector2 lastMousePosition;
+ 	private Vector2 currentAngle = new Vector2(0, 0);
+-	private Vector3 targetPos;
+ 	private Vector3 offset;
+ 
+ 	void Start()
+     {
+         offset = transform.position - player.transform.position;
+-		targetPos = player.transform.position;
+     }
+ 
+     void LateUpdate()
