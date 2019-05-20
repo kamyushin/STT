@@ -11,13 +11,14 @@ public class PlayerController : CharaController
 	/// 2.適度にパラメータを調整してください。
 	/// </summary>
 
-    public float runSpeed;				// 移動速度
-	public float walkSpeed;				// 歩・走の速度比の調整
+    public float runSpeed;				// 走る速度
+	public float walkSpeed;				// 歩く速度
 	public float jumpPower;				// ジャンプ力ぅ…ですかね…
-	public Transform CameraTransform;	// 横の視点移動（MainCameraをアタッチ）
 	public float rotateRate;
+	public Transform CameraTransform;   // 横の視点移動（MainCameraをアタッチ）
 
-    PlayerController(){
+
+	PlayerController(){
 		HP = 10;
 		Attack = 1;
 		runSpeed = 4.0f;
@@ -42,6 +43,9 @@ public class PlayerController : CharaController
 		Vector3 dirHorizontal = new Vector3(Mathf.Cos(angleDir), 0, -Mathf.Sin(angleDir));  // カメラ右正面方向をベクトルで取得
 
 		// Playerの回転制御
+		if (false) {
+
+		}
 
 		
 		// 走る：デフォルト
