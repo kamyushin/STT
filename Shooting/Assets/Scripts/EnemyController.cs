@@ -17,7 +17,6 @@ public class EnemyController : CharaController
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("RandomWalk");
     }
 
     // Update is called once per frame
