@@ -1,0 +1,11 @@
+diff a/Shooting/Assets/Scripts/PlayerController.cs b/Shooting/Assets/Scripts/PlayerController.cs	(rejected hunks)
+@@ -42,9 +42,6 @@
+ 		Vector3 dirHorizontal = new Vector3(Mathf.Cos(angleDir), 0, -Mathf.Sin(angleDir));  // カメラ右正面方向をベクトルで取得
+ 
+ 		// Playerの回転制御
+-		if (false) {
+-
+-		}
+ 
+ 		
+ 		// 走る：デフォルト
