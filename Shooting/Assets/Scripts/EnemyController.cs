@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyController : CharaController
 {
-
     public float WalkSpeed;
     public float ChangeForwardTime;
     EnemyController()
     {
+        Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
         HP = 3;
         Attack = 1;
-        WalkSpeed = 0.01f;
+        WalkSpeed = 0.5f;
         ChangeForwardTime = 3.0f;
     }
     // Start is called before the first frame update
@@ -21,20 +21,36 @@ public class EnemyController : CharaController
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
-        transform.position += transform.forward * WalkSpeed;
-        if ( HP == 0)
+        base.Update();
+        if (HP == 0)
         {
             Destroy(this.gameObject);
         }
-            
     }
 
-    void OnCollisionEnter(Collision collision)
+    public override void wait() {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
+            StartCoroutine("RandomWalk");
+        }
+        
+    }
+    public override void move()
     {
-        if (collision.gameObject.tag != "enemy")
-            damageHP(1);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Routine = CharaRoutine.CHARA_ROUTINE_WAIT;
+            StopCoroutine("RandomWalk");
+        }
+        transform.position += transform.forward * WalkSpeed * Time.deltaTime;
+    }
+
+
+    public override void shot()
+    {
     }
 
     IEnumerator RandomWalk()
@@ -44,5 +60,11 @@ public class EnemyController : CharaController
             transform.forward = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f)).normalized;
             yield return new WaitForSeconds(ChangeForwardTime);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "enemy")
+            damageHP(1);
     }
 }

@@ -234,10 +234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90474d4b30915b94cb4dde9163e86224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routine: 0
   HP: 3
   Attack: 1
-  WalkSpeed: 0.01
-  Angle: {x: 0, y: 0, z: 0}
+  WalkSpeed: 0.5
+  ChangeForwardTime: 3
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 539172627}
+  mainCamera: {fileID: 0}
 --- !u!1 &539172627
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,10 +529,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b027622c6f9b444ba9d6ee0c024e453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routine: 0
   HP: 1
   Attack: 0
-  speed: 10
-  rb: {fileID: 0}
+  runSpeed: 4
+  walkSpeed: 1
+  jumpPower: 0
+  CameraTransform: {fileID: 0}
+  rotateRate: 0
 --- !u!54 &539172629
 Rigidbody:
   m_ObjectHideFlags: 0
