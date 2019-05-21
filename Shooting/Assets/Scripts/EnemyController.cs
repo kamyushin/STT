@@ -8,15 +8,17 @@ public class EnemyController : CharaController
     public float ChangeForwardTime;
     EnemyController()
     {
+        
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
         HP = 3;
         Attack = 1;
         WalkSpeed = 0.5f;
         ChangeForwardTime = 3.0f;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        StartCoroutine("RandomWalk");
     }
 
     // Update is called once per frame

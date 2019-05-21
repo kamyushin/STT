@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90474d4b30915b94cb4dde9163e86224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routine: 0
-  HP: 3
-  Attack: 1
+  routine: 1
+  hp: 3
+  attack: 1
   WalkSpeed: 0.5
   ChangeForwardTime: 3
 --- !u!1 &170076733
@@ -530,13 +530,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   routine: 0
-  HP: 1
-  Attack: 0
+  hp: 10
+  attack: 1
   runSpeed: 4
   walkSpeed: 1
   jumpPower: 0
-  CameraTransform: {fileID: 0}
   rotateRate: 0
+  CameraTransform: {fileID: 0}
 --- !u!54 &539172629
 Rigidbody:
   m_ObjectHideFlags: 0
