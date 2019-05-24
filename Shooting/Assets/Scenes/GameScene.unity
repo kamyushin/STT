@@ -529,14 +529,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b027622c6f9b444ba9d6ee0c024e453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routine: 0
+  routine: 1
   hp: 10
   attack: 1
   runSpeed: 4
   walkSpeed: 1
   jumpPower: 0
   rotateRate: 0
-  CameraTransform: {fileID: 0}
+  CameraTransform: {fileID: 534669905}
 --- !u!54 &539172629
 Rigidbody:
   m_ObjectHideFlags: 0
