@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EnemyController : CharaController
 {
-    public float WalkSpeed;
-    public float ChangeForwardTime;
-    EnemyController()
+    [SerializeField]
+    private float walkSpeed = 0.5f;
+    public float WalkSpeed
     {
-        
+        get { return walkSpeed; }
+        set { walkSpeed = value; }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    private float changeForwardTime = 3.0f;
+    public float ChangeForwardTime
     {
-        Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
-        HP = 3;
-        Attack = 1;
-        WalkSpeed = 0.5f;
-        ChangeForwardTime = 3.0f;
-        StartCoroutine("RandomWalk");
+        get { return changeForwardTime; }
+        set { changeForwardTime = value; }
     }
+    
 
     // Update is called once per frame
     override protected void Update()

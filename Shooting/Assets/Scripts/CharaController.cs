@@ -44,13 +44,6 @@ abstract public class CharaController : MonoBehaviour
     //射撃
     public virtual void shot() { }
 
-    protected CharaController()
-    {
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     virtual protected void Update()
