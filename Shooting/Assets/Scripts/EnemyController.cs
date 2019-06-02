@@ -37,18 +37,15 @@ public class EnemyController : CharaController
         ENEMY_ROUTINE_SEARCH,           //周り見まわし
         ENEMY_ROUTINE_TOPLAYER,         //プレイヤーに向かっていく
     }
-
-
-    private bool isTargetRecognize = false;                 //ターゲットを認識しているか
-
     private float viewing_angle = 60;               //視野角(角度)
     private float viewing_distance = 10;             //視野範囲
-
     private GameObject targetPlayer = null;         //targetとなるプレイヤー
     private Vector3 targetAngle = Vector3.zero;     //targetの方向
 
+    private bool isTargetRecognize = false;                 //ターゲットを認識しているか
 
-    
+
+
 
     // Update is called once per frame
     override protected void Update()
@@ -64,6 +61,7 @@ public class EnemyController : CharaController
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
+            e_routine = EnemyRoutine.ENEMY_ROUTINE_LINEAR;
         }
         
     }
@@ -72,7 +70,8 @@ public class EnemyController : CharaController
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Routine = CharaRoutine.CHARA_ROUTINE_WAIT;
-            e_routine = EnemyRoutine.ENEMY_ROUTINE_LINEAR;
+            targetPlayer = null;
+            isTargetRecognize = false;
         }
 
         if (targetPlayer == null)
