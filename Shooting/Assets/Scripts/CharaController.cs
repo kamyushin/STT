@@ -48,7 +48,7 @@ abstract public class CharaController : MonoBehaviour
     // Update is called once per frame
     virtual protected void Update()
     {
-        switch (Routine)
+        switch (routine)
         {
             case CharaRoutine.CHARA_ROUTINE_WAIT:
                 wait();
