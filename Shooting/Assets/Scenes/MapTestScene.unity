@@ -15595,7 +15595,7 @@ PrefabInstance:
     - target: {fileID: 4658428099128975380, guid: 9268cc23514a42e40a69803d64d3b402,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: TyonPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4658428099128975377, guid: 9268cc23514a42e40a69803d64d3b402,
         type: 3}
