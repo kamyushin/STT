@@ -15765,6 +15765,11 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4658428099128975390, guid: 9268cc23514a42e40a69803d64d3b402,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 4658428099128975381, guid: 9268cc23514a42e40a69803d64d3b402,
         type: 3}
       propertyPath: CameraTransform

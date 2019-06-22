@@ -58,8 +58,13 @@ public class EnemyController : CharaController
     /// <summary>
     /// ターゲットを認識しているかどうか
     /// </summary>
-    public bool IsTargetRecognize { get; set; }                
-    
+    public bool IsTargetRecognize { get; set; }
+
+
+    override protected void Start()
+    {
+        base.Start();
+    }
     // Update is called once per frame
     override protected void Update()
     {
@@ -71,6 +76,8 @@ public class EnemyController : CharaController
     }
 
     public override void wait() {
+        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Routine = CharaRoutine.CHARA_ROUTINE_MOVE;
@@ -81,6 +88,10 @@ public class EnemyController : CharaController
     }
     public override void move()
     {
+        if (animator != null)
+        {
+            animator.SetInteger("E_Routine", (int)e_routine);
+        }
         switch (e_routine)
         {
             case EnemyRoutine.ENEMY_ROUTINE_LINEAR:

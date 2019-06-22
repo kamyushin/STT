@@ -38,16 +38,26 @@ abstract public class CharaController : MonoBehaviour
     }
 
     //待機
-    public virtual void wait() { }
+    public virtual void wait() {}
     //移動
     public virtual void move() { }
     //射撃
     public virtual void shot() { }
 
 
+    protected Animator animator;
+
+    virtual protected void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     // Update is called once per frame
     virtual protected void Update()
     {
+        if (animator != null)
+        {
+            animator.SetInteger("Routine", (int)routine);
+        }
         switch (routine)
         {
             case CharaRoutine.CHARA_ROUTINE_WAIT:
