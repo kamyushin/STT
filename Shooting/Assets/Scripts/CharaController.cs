@@ -39,7 +39,7 @@ abstract public class CharaController : MonoBehaviour
 
     //待機
     public virtual void wait() {}
-    //移動
+    //行動
     public virtual void move() { }
     //射撃
     public virtual void shot() { }
